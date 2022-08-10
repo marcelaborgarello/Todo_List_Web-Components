@@ -64,7 +64,7 @@ class ItemsList extends HTMLElement {
         border-radius: 4px;
         font-size: 24px;
         }
-  
+
       .checked{
         text-decoration: line-through;
         opacity: .3;
@@ -83,7 +83,7 @@ class ItemsList extends HTMLElement {
         width: 100%;
         height: 50px;
       }
-  
+
       `;
 
     const check = this.shadow.querySelectorAll("input");
@@ -130,11 +130,13 @@ class ItemsList extends HTMLElement {
     const buttonRemoveAll = this.shadow.querySelector(".button-remove-all");
 
     buttonRemoveAll?.addEventListener("click", (e) => {
-      console.log(e.isTrusted);
+      // console.log(e);
       if (e.isTrusted) {
-        alert("Estás seguro de eliminar todo?");
-        state.removeAllItem();
-        this.shadow.innerHTML = "";
+        const resultado = window.confirm("Estas seguro que quieres eliminar todo?");
+        if (resultado === true) {
+          state.removeAllItem();
+          this.shadow.innerHTML = "";
+        }
       }
     });
 
