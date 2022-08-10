@@ -41,7 +41,6 @@ class ItemsList extends HTMLElement {
         flex-direction: column;
         margin: 20px;
         padding: 0;
-
       }
 
       .check {
@@ -129,9 +128,14 @@ class ItemsList extends HTMLElement {
     });
 
     const buttonRemoveAll = this.shadow.querySelector(".button-remove-all");
-    buttonRemoveAll?.addEventListener("click", () => {
-      state.removeallItem();
-      this.shadow.innerHTML = "";
+
+    buttonRemoveAll?.addEventListener("click", (e) => {
+      console.log(e.isTrusted);
+      if (e.isTrusted) {
+        alert("Estás seguro de eliminar todo?");
+        state.removeAllItem();
+        this.shadow.innerHTML = "";
+      }
     });
 
     this.shadow.appendChild(style);

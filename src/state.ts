@@ -39,7 +39,7 @@ const state = {
     cs.list = cs.list.filter((i) => i !== item);
     this.setState(cs);
   },
-  removeallItem() {
+  removeAllItem() {
     // elimina todos los items de la lista
     const cs = this.getState();
     cs.list = [];
